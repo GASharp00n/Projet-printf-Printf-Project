@@ -1,0 +1,17 @@
+name: Criterion testing
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: docker
+    container:
+      image: git.ecole-89.com/eriizu/c_grader
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: make ut.out
+
+      - run: ./ut.out --verbose
+
+
+
